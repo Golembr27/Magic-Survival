@@ -3,19 +3,17 @@ using UnityEngine;
 
 public class BarraDeVida : MonoBehaviour
 {
-    public static BarraDeVida instance;
+    public static BarraDeVida Instance;
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
-    public TextMeshProUGUI tm;
-
-    Status status;
+    public TextMeshProUGUI tmVidaAtul;
 
     //Dano que a magia vai dar
-    public float Dano = 1f;
+    public int Dano = 1;
     //A variavel bool "PodeDarDano", faz se o Player colidir vai receber dano.
     public bool PodeDarDano = false;
 
@@ -26,6 +24,7 @@ public class BarraDeVida : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         AtivarTempo = false;
         PodeDarDano = false;
     }
@@ -44,30 +43,25 @@ public class BarraDeVida : MonoBehaviour
         }
         if (PodeDarDano == true && TempoDeSkill <= 0f)
         {
-            Debug.Log($"Perdeu {Status.instance.vidaAtual} de Vida");
-            Status.instance.vidaAtual -= Dano;
-            tm.text = ($"{Status.instance.vidaAtual}/{Status.instance.vidaMaxima}");
-            Status.instance.MortePlayer();
+            Status.Instance.vidaAtual -= Dano;
+            tmVidaAtul.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
+            Status.Instance.MortePlayer();
             AtivarTempo = true;
             TempoDeSkill = 3f;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D c)
-    {
-        if (c.GetComponent<BoxCollider2D>().CompareTag("Player"))
-        {
-            Debug.Log("DarDano Ativado");
-            PodeDarDano = true;
-            AtivarTempo = true;
-            Debug.Log($"{PodeDarDano}, Player Atacado");
-        }
-    }
+    
 
     private void OnTriggerExit2D(Collider2D c)
     {
         AtivarTempo = false;
         PodeDarDano = false;
         Debug.Log($"{PodeDarDano}, Player Atacado");
+    }
+
+    public void TextoMuda()
+    {
+        tmVidaAtul.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
     }
 }

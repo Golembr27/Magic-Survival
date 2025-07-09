@@ -12,8 +12,6 @@ public class Magia : MonoBehaviour
         Instance = this;
     }
 
-    private BarraDaMana barraDaMana;
-
     Vector2 mousePos;
     Vector2 dirArma;
 
@@ -49,14 +47,15 @@ public class Magia : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && podeAtirar == true)
         {
-            if(BarraDaMana.instance.manaAtul >= 0)
+            if(Status.Instance.manaAtual >= 0)
             {
-                BarraDaMana.instance.magiaAcionada = true;
+                Debug.Log("Mana atual é menor ou iguala a 0");
+                BarraDaMana.Instance.magiaAcionada = true;
             }
             podeAtirar = false;
             Instantiate(tiro, pontoDeFogo.position, pontoDeFogo.rotation);
             Invoke("CDTiro", tempoentretiros);
-        }else BarraDaMana.instance.magiaAcionada = false;
+        }else BarraDaMana.Instance.magiaAcionada = false;
 
     }
 

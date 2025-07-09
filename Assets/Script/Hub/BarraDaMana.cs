@@ -3,19 +3,15 @@ using UnityEngine;
 
 public class BarraDaMana : MonoBehaviour
 {
-    public static BarraDaMana instance;
+    public static BarraDaMana Instance;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
-    Bala bala;
-    Magia magia;
-
     public int gastoDaMagia;
-    public int manaAtul;
-    public int manaMaxima = 20;
+
     public bool magiaAcionada;
     public TextMeshProUGUI tmManaAtul;
 
@@ -23,22 +19,25 @@ public class BarraDaMana : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        manaAtul = manaMaxima;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (manaAtul <= 0) 
+        if (Status.Instance.manaAtual <= 0) 
         {
             Magia.Instance.podeAtirar = false;
         }else Magia.Instance.podeAtirar = true;
         if (magiaAcionada == true)
         {
-            Debug.Log($"magiaAcionada = {magiaAcionada}");
-            gastoDaMagia = Bala.Instance.gastoDeMana;
-            manaAtul -= gastoDaMagia;
-            tmManaAtul.text = ($"{manaAtul}/{manaMaxima}");
+            Status.Instance.manaAtual -= gastoDaMagia;
+            tmManaAtul.text = ($"{Status.Instance.manaAtual}/{Status.Instance.manaMaxima}");
         }
+    }
+
+    public void TextoMuda()
+    {
+        tmManaAtul.text = ($"{Status.Instance.manaAtual}/{Status.Instance.manaMaxima}");
     }
 }

@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class StatusInimigo : MonoBehaviour
@@ -9,18 +10,29 @@ public class StatusInimigo : MonoBehaviour
         Instance = this;
     }
 
+    GameObject mana;
+
+    public int danoBasico = 1;
     public float vidaAtual;
     public float vidaMaxima = 3; // Defina um valor máximo para a vida
     private void Start()
     {
+        mana = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/OrbeDeMana.prefab");
         vidaAtual = vidaMaxima; // Inicializa a vida atual
     }
+
+    void DropMana()
+    {  
+        Instantiate(mana, transform.position, transform.rotation);
+    }
+
     public void MorteInimigo()
     {
         vidaAtual--;
         if (vidaAtual <= 0)
         {
             // Aqui você pode chamar a lógica de fase, se necessário
+            DropMana();
             Spawn.instance.quantIniAtual++;
             Spawn.instance.Fases();
             Destroy(gameObject);
@@ -31,7 +43,6 @@ public class StatusInimigo : MonoBehaviour
     {
         if (c.collider.CompareTag("Projetiu"))
         {
-
             MorteInimigo();
             return;
         }

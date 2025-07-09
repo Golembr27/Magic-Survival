@@ -34,7 +34,6 @@ public class Spawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        
         if (c.CompareTag("Player"))
         {
             faseIni = true;
@@ -46,6 +45,13 @@ public class Spawn : MonoBehaviour
     {
         if (quantIniAtual == quantInMax)
         {
+            Status.Instance.vidaAtual = Status.Instance.vidaMaxima;
+            Status.Instance.manaAtual = Status.Instance.manaMaxima;
+            //SlotsDasCartas.Instance.objetoSpawnado = 1;
+            SlotsDasCartas.Instance.CartaAleatoria();
+            quantIniAtual = 0;
+            quantInMax += 2;
+            quantInimigo = 0;
             faseIni = false;
             fases++;
             fasesText.text = ($"{fases}");

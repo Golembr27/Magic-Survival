@@ -2,16 +2,34 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
-    public static Status instance;
+    public static Status Instance;
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
-    public float vidaAtual;
+    public int vidaAtual;
 
-    public float vidaMaxima = 25f;
+    public int vidaMaxima = 25;
+
+    //Status da MAGIA BASICA
+    public int danoMagiaBasica = 2;
+    //Status da MAGIA BASICA
+
+    //Status de Mana
+    public int manaMaxima;
+    public int manaAtual;
+
+    //Status de DEFESA
+    public int defesaContraArmaDeMao = 1;
+    public int defesaContraProjetius = 1;
+    public int defesaContraVenenos = 1;
+    public int defesaContraMaldicao = 1;
+    //Status de DEFESA
+
+    //Status de ATAQUE
+    public int danoReal = 2;
 
     public void MortePlayer()
     {
@@ -24,6 +42,8 @@ public class Status : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        manaAtual = 20;
+        manaMaxima = 20;
         vidaAtual = vidaMaxima;
     }
 

@@ -9,14 +9,10 @@ public class Bala : MonoBehaviour
         Instance = this;
     }
 
-
     StatusInimigo statusInimigo;
 
     public float tempoDeVida;
     public float velocidade;
-
-    public int danoMagiaBasica = 2;
-    public int gastoDeMana = 2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

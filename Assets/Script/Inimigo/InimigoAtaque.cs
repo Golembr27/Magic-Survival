@@ -13,10 +13,8 @@ public class InimigoAtaque : MonoBehaviour
 
     TextMeshProUGUI tm;
 
-    Status status;
-
     //Dano que a magia vai dar
-    public float Dano = 1f;
+    public int Dano;
     //A variavel bool "PodeDarDano", faz se o Player colidir vai receber dano.
     public bool PodeDarDano = false;
 
@@ -28,7 +26,7 @@ public class InimigoAtaque : MonoBehaviour
     void Start()
     {
         tm = GameObject.Find("Canvas").transform.Find("BarraDeVida").transform.Find("VidaAtual").GetComponent<TextMeshProUGUI>();
-        
+        Dano = StatusInimigo.Instance.danoBasico;
         AtivarTempo = false;
         PodeDarDano = false;
     }
@@ -47,18 +45,24 @@ public class InimigoAtaque : MonoBehaviour
         }
         if (PodeDarDano == true && TempoDeSkill <= 0f)
         {
-            Debug.Log($"Perdeu {Status.instance.vidaAtual} de Vida");
-            Status.instance.vidaAtual -= Dano;
-            tm.text = ($"{Status.instance.vidaAtual}/{Status.instance.vidaMaxima}");
-            Status.instance.MortePlayer();
+            Debug.Log($"Perdeu {Status.Instance.vidaAtual} de Vida");
+            CalculoDaDefesa();
+            Status.Instance.vidaAtual -= Dano;
+            tm.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
+            Status.Instance.MortePlayer();
             AtivarTempo = true;
             TempoDeSkill = 3f;
         }
     }
 
+    public void CalculoDaDefesa()
+    {
+
+    }
+
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.GetComponent<BoxCollider2D>().CompareTag("Player"))
+        if (c.CompareTag("Player"))
         {
             
             Debug.Log("DarDano Ativado");
