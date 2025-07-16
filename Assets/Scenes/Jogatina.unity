@@ -833,13 +833,21 @@ MonoBehaviour:
   Slot1: {fileID: 1591606800}
   Slot2: {fileID: 833111261}
   Slot3: {fileID: 203227955}
+  canva: {fileID: 1924458523}
+  Slot: {fileID: 0}
+  cartaDeVida: 0
+  cartaDeDano: 0
+  cartaDeMana: 0
   PrefabVida: {fileID: 2959762797282471366, guid: da31e0424de7d8443a9402e0bd9bcb49, type: 3}
   PrefabDano: {fileID: 2959762797282471366, guid: f40df3e5e616dd849be85aaaccf231d7, type: 3}
   PrefabMana: {fileID: 2959762797282471366, guid: 56183139c1f399f47b2bf8c607823be7, type: 3}
+  PrefabVazio: {fileID: 1443623233372144164, guid: 510cce310f11fe744b57a7cbeb4ae631, type: 3}
   objetoMaximo: 4
   objetoSpawnado: 0
   totalNumeros: 0
   numeroAleatorio: 0
+  numeroDeContagemDoSpawn: 0
+  listaDeCartas: []
 --- !u!114 &678196638
 MonoBehaviour:
   m_ObjectHideFlags: 0

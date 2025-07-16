@@ -45,12 +45,11 @@ public class Spawn : MonoBehaviour
     {
         if (quantIniAtual == quantInMax)
         {
-            Status.Instance.vidaAtual = Status.Instance.vidaMaxima;
-            Status.Instance.manaAtual = Status.Instance.manaMaxima;
-            //SlotsDasCartas.Instance.objetoSpawnado = 1;
+            SlotsDasCartas.Instance.prefabVazioSpawn = true;
+            SlotsDasCartas.Instance.Finalizado();
             SlotsDasCartas.Instance.CartaAleatoria();
             quantIniAtual = 0;
-            quantInMax += 2;
+            quantInMax += 3;
             quantInimigo = 0;
             faseIni = false;
             fases++;

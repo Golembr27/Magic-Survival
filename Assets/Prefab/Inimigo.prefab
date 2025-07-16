@@ -177,8 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4e0759d074c5643a5cabf8bb67948a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  danoBasico: 1
   vidaAtual: 0
-  vidaMaxima: 3
+  vidaMaxima: 2
 --- !u!114 &8263043019574079006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidade: 3
-  player: {fileID: 0}
   Spawnou: 0
 --- !u!114 &194730024468957352
 MonoBehaviour:

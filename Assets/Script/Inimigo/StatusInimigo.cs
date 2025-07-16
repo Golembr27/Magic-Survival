@@ -14,7 +14,7 @@ public class StatusInimigo : MonoBehaviour
 
     public int danoBasico = 1;
     public float vidaAtual;
-    public float vidaMaxima = 3; // Defina um valor máximo para a vida
+    public float vidaMaxima = 2; // Defina um valor máximo para a vida
     private void Start()
     {
         mana = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/OrbeDeMana.prefab");
@@ -28,7 +28,7 @@ public class StatusInimigo : MonoBehaviour
 
     public void MorteInimigo()
     {
-        vidaAtual--;
+        vidaAtual-= Status.Instance.danoReal;
         if (vidaAtual <= 0)
         {
             // Aqui você pode chamar a lógica de fase, se necessário
