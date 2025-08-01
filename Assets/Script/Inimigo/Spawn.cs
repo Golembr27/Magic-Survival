@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public static Spawn instance;
+    public static Spawn Instance;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
+
+    public float tempoDeSpawn;
+
+    public int spawnContagemOrda;
+
+    public int numeroAleatorioDeSpawn;
+
+    public bool AtivarOrda = true;
 
     TextMeshProUGUI fasesText;
     BoxCollider2D play;
@@ -21,11 +29,14 @@ public class Spawn : MonoBehaviour
     public int fases;
     public int quantInMax;
 
+    int arma = 1;
+
     void spawn()
     {
-        if (faseIni == true && quantInimigo < quantInMax)
+        if (faseIni == true && quantInimigo < quantInMax && AtivarOrda == true)
         {
             quantInimigo++;
+            ArmasCorpoACorpo.Instance.EscolhaDeClasse();
             Instantiate(inimigo, spawnTR.position, spawnTR.rotation);
             spawn();
             return;
@@ -49,7 +60,7 @@ public class Spawn : MonoBehaviour
             SlotsDasCartas.Instance.Finalizado();
             SlotsDasCartas.Instance.CartaAleatoria();
             quantIniAtual = 0;
-            quantInMax += 3;
+            quantInMax += numeroAleatorioDeSpawn;
             quantInimigo = 0;
             faseIni = false;
             fases++;
@@ -65,10 +76,5 @@ public class Spawn : MonoBehaviour
         quantIniAtual = 0;
         fases = 1;
         fasesText.text = ($"{fases}");
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 }

@@ -34,7 +34,8 @@ Transform:
   m_LocalPosition: {x: 2.46, y: 2.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4313186852706989994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5684323152680839066
@@ -177,6 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4e0759d074c5643a5cabf8bb67948a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idInimigo: 0
+  quantidadeDeNumerosParaOIdMaximo: 8
+  quantidadeDeNumerosParaOId: 0
+  arma: 0
+  nomeDaClasse: 
+  armaEscolhida: {fileID: 0}
   danoBasico: 1
   vidaAtual: 0
   vidaMaxima: 2
@@ -210,3 +217,34 @@ MonoBehaviour:
   PodeDarDano: 0
   TempoDeSkill: 0
   AtivarTempo: 0
+--- !u!1 &4979314040268082173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4313186852706989994}
+  m_Layer: 0
+  m_Name: SpawnArma
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4313186852706989994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979314040268082173}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.25275248, w: 0.967531}
+  m_LocalPosition: {x: -0.565, y: -0.042, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4052069721227297557}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 29.281}

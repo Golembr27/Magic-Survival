@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarraDeVida : MonoBehaviour
 {
@@ -12,8 +13,8 @@ public class BarraDeVida : MonoBehaviour
 
     public TextMeshProUGUI tmVidaAtul;
 
-    //Dano que a magia vai dar
-    public int Dano = 1;
+    [SerializeField]Image BarraDaVidaUI;
+    
     //A variavel bool "PodeDarDano", faz se o Player colidir vai receber dano.
     public bool PodeDarDano = false;
 
@@ -24,7 +25,6 @@ public class BarraDeVida : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         AtivarTempo = false;
         PodeDarDano = false;
     }
@@ -43,15 +43,15 @@ public class BarraDeVida : MonoBehaviour
         }
         if (PodeDarDano == true && TempoDeSkill <= 0f)
         {
-            Status.Instance.vidaAtual -= Dano;
+            BarraDaVidaUI.fillAmount = Status.Instance.vidaAtual / Status.Instance.vidaMaxima;
+            Debug.Log(BarraDaVidaUI.fillAmount);
+            Status.Instance.vidaAtual -= InimigoAtaque.instance.Dano;
             tmVidaAtul.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
             Status.Instance.MortePlayer();
             AtivarTempo = true;
             TempoDeSkill = 3f;
         }
     }
-
-    
 
     private void OnTriggerExit2D(Collider2D c)
     {
