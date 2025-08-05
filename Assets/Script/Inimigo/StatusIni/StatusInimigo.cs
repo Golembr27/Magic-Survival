@@ -37,8 +37,11 @@ public class StatusInimigo : MonoBehaviour
 
     public void SpawnArmas()
     {
-        GameObject arma = Instantiate(armaEscolhida, transform.Find("SpawnArma").transform.position, transform.rotation);
-        arma.transform.parent = transform.Find("SpawnArma").transform;
+        if(ArmasCorpoACorpo.Instance.armaSpawn <= Spawn.Instance.quantInMax)
+        {
+            GameObject arma = Instantiate(armaEscolhida, transform.Find("SpawnArma").transform.position, transform.rotation);
+            arma.transform.parent = transform.Find("SpawnArma").transform;
+        }
     }
 
     public void calculoDeIDInimigo()
@@ -64,6 +67,7 @@ public class StatusInimigo : MonoBehaviour
         vidaAtual-= Status.Instance.danoReal;
         if (vidaAtual <= 0)
         {
+            ArmasCorpoACorpo.Instance.armaSpawn = 0;
             // Aqui você pode chamar a lógica de fase, se necessário
             DropMana();
             Spawn.Instance.quantIniAtual++;

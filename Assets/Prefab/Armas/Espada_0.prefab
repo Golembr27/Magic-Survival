@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2193316877350397917}
   - component: {fileID: 337324573087488205}
   - component: {fileID: -7036924911730034699}
+  - component: {fileID: -3292412706637333280}
   m_Layer: 0
   m_Name: Espada_0
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5937764268318024347, guid: 5fec65ae48dc7084381bc4fc5bd924b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -134,3 +135,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.26, y: 0.94}
   m_EdgeRadius: 0
+--- !u!114 &-3292412706637333280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5233414543248196514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513e612d1e054364698598e37e8b3f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dano: 4
+  PodeDarDano: 0
+  TempoDeSkill: 1
+  AtivarTempo: 0

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +12,9 @@ public class BarraDeVida : MonoBehaviour
         Instance = this;
     }
 
-    public TextMeshProUGUI tmVidaAtul;
+    public Slider slider;
 
-    [SerializeField]Image BarraDaVidaUI;
+    public TextMeshProUGUI tmVidaAtul;
     
     //A variavel bool "PodeDarDano", faz se o Player colidir vai receber dano.
     public bool PodeDarDano = false;
@@ -25,9 +26,13 @@ public class BarraDeVida : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tmVidaAtul.gameObject.SetActive(false);
+        slider.maxValue = Status.Instance.vidaMaxima;
+        slider.value = Status.Instance.vidaMaxima;
         AtivarTempo = false;
         PodeDarDano = false;
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -42,15 +47,16 @@ public class BarraDeVida : MonoBehaviour
             }
         }
         if (PodeDarDano == true && TempoDeSkill <= 0f)
-        {
-            BarraDaVidaUI.fillAmount = Status.Instance.vidaAtual / Status.Instance.vidaMaxima;
-            Debug.Log(BarraDaVidaUI.fillAmount);
+        {   
             Status.Instance.vidaAtual -= InimigoAtaque.instance.Dano;
+            
             tmVidaAtul.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
             Status.Instance.MortePlayer();
             AtivarTempo = true;
             TempoDeSkill = 3f;
         }
+        
+        slider.value = Status.Instance.vidaAtual;
     }
 
     private void OnTriggerExit2D(Collider2D c)
@@ -64,4 +70,7 @@ public class BarraDeVida : MonoBehaviour
     {
         tmVidaAtul.text = ($"{Status.Instance.vidaAtual}/{Status.Instance.vidaMaxima}");
     }
+
+    
+
 }

@@ -20,7 +20,9 @@ public class CartaVida : MonoBehaviour
     {
         SlotsDasCartas.Instance.Finalizado();
         StatusCarta.Instance.numeroDeCartasVida++;
-        Status.Instance.vidaMaxima += StatusCarta.Instance.statusCartaVida;
+        int vidaSlide = Status.Instance.vidaMaxima += StatusCarta.Instance.statusCartaVida;
+        BarraDeVida.Instance.slider.maxValue = vidaSlide;
+        BarraDeVida.Instance.slider.value = vidaSlide;
         Status.Instance.vidaAtual = Status.Instance.vidaMaxima;
         BarraDeVida.Instance.TextoMuda();
         Destroy(objeto1);

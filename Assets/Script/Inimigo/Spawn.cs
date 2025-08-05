@@ -36,8 +36,8 @@ public class Spawn : MonoBehaviour
         if (faseIni == true && quantInimigo < quantInMax && AtivarOrda == true)
         {
             quantInimigo++;
-            ArmasCorpoACorpo.Instance.EscolhaDeClasse();
             Instantiate(inimigo, spawnTR.position, spawnTR.rotation);
+            ArmasCorpoACorpo.Instance.EscolhaDeClasse();
             spawn();
             return;
         }

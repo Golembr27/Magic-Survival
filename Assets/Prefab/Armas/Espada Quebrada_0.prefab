@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1922478912632588459}
   - component: {fileID: 6127955720410218730}
   - component: {fileID: 5817549849074634060}
+  - component: {fileID: -8837820656152330018}
   m_Layer: 0
   m_Name: Espada Quebrada_0
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 4677752825078530838, guid: b92423889b43ccb43b2924388699ee4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -134,3 +135,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.26, y: 0.74}
   m_EdgeRadius: 0
+--- !u!114 &-8837820656152330018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291525752506752806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513e612d1e054364698598e37e8b3f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dano: 2
+  PodeDarDano: 0
+  TempoDeSkill: 0.5
+  AtivarTempo: 0

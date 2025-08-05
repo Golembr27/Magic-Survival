@@ -9,8 +9,15 @@ public class InimigoMov : MonoBehaviour
     }
 
     public float velocidade;
+
     Transform player;
-    
+
+    float distaociaMaxima = 5f;
+
+    public bool inicoArco = false;
+
+    Vector2 seguirPlayer;
+
     public int Spawnou = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,9 +28,15 @@ public class InimigoMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player);
-        Vector2 seguirPlayer = (player.position - transform.position).normalized;
-
+        if(inicoArco == true)
+        {
+            float distancia = Vector2.Distance(player.transform.position, transform.position);
+            if(distancia <= distaociaMaxima)
+            {
+                seguirPlayer = (player.position + transform.position).normalized;
+            }
+        }
+        seguirPlayer = (player.position - transform.position).normalized;
         transform.Translate(seguirPlayer * velocidade * Time.deltaTime);
     }
 }
