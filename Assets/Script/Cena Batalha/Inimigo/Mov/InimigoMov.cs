@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class InimigoMov : MonoBehaviour
 {
@@ -8,48 +9,31 @@ public class InimigoMov : MonoBehaviour
         Instance = this;
     }
 
-    public float velocidade;
-    public float multiplicadorDeDiminuirVelocidade = 1.5f;
-
-    Transform player;
-
-    public float distaociaMaxima = 1f;
-
-    public bool inicoArco = false;
-
-    public bool inimigoEntroEmColisaoComOCenario = false;
-
+    GameObject player;
+    public float velocidade = 2.5f;
     
-    Vector2 seguirPlayer;
-    public float velocidadePerto = 1.5f;
-    public float velocidadeLonge = 3f;
-    public float distanciaMaximaParaDiminuirVelocidade = 1.5f;
+    
 
-    public int Spawnou = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = GameObject.Find("Player").transform.GetComponent<Transform>();
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null) return; // Evita erros se player não existir
+        Vector2 direction = (Vector2)(player.transform.position - transform.position);
+        direction.Normalize();
+        // Movimento em direção ao player (mantido igual)
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidade * Time.deltaTime);
+        // Travar rotação: mantém em 0 (sem rotação para baixo ou qualquer direção)
+        transform.rotation = Quaternion.identity; // Ou Quaternion.Euler(0, 0, 0);
+        // Flip horizontal para simular direção esquerda/direita (sem rotacionar para baixo)
 
-
-
-        float distanciaDoInimigoAoPlayer = Vector2.Distance(player.position, transform.position);
-        Vector2 direcao = (player.position - transform.position).normalized;
-        if (distanciaDoInimigoAoPlayer <= distanciaMaximaParaDiminuirVelocidade)
-        {
-            transform.Translate(direcao * velocidadePerto * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(direcao * velocidadeLonge * Time.deltaTime);
-        }
     }
 
-    
+
 
 }
