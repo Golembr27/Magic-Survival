@@ -14,17 +14,11 @@ public class CartaDano : MonoBehaviour
 
     private void Start()
     {
-        objeto1 = GameObject.Find("PREFABVAZIO(Clone)");
+        objeto1 = GameObject.Find("ObjetoPai(Clone)");
     }
 
     public void CartaDanO()
     {
-        foreach (GameObject obj in Spawn.Instance.ListInimigo)
-        {
-            Destroy(obj);
-        }
-        Spawn.Instance.ListInimigo.Clear();
-
         SlotsDasCartas.Instance.cartaAtiva = false;
         Spawn.Instance.faseIni = true;
         Spawn.Instance.quantIniAtual = Spawn.Instance.quantInMax;

@@ -73,6 +73,7 @@ public class SlotsDasCartas : MonoBehaviour
         
         if (objetoSpawnado <= objetoMaximo)
         {
+            Destroy(Spawn.Instance.vazio);
             if (numeroAleatorio == 1) //Carta de vida
             {
                 PrefabEscolhido = PrefabVida; 
@@ -160,7 +161,7 @@ public class SlotsDasCartas : MonoBehaviour
                     Slot.transform.parent = GDestroi.transform;
                     Slot.transform.localScale = new Vector3(1f, 1f, 1f);
                     CartaAleatoria();
-                    return;
+                    
                 }
                 if (objetoSpawnado == 2)
                 {
@@ -170,7 +171,7 @@ public class SlotsDasCartas : MonoBehaviour
                     Slot.transform.parent = GDestroi.transform;
                     Slot.transform.localScale = new Vector3(1f, 1f, 1f);
                     CartaAleatoria();
-                    return;
+                    
                 }
                 if (objetoSpawnado == 3)
                 {
@@ -180,8 +181,9 @@ public class SlotsDasCartas : MonoBehaviour
                     Slot.transform.parent = GDestroi.transform;
                     Slot.transform.localScale = new Vector3(1f, 1f, 1f);
                     CartaAleatoria();
-                    return;
+                    
                 }
+                Destroy(Spawn.Instance.vazio);
                 return;
             }
         }

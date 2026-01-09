@@ -43,7 +43,7 @@ public class StatusInimigo : MonoBehaviour
 
     private void Start()
     {
-        calculoDeIDInimigo();
+        
         morteAtiva = false;
         //PontosTM = gameObject.transform.Find("Canvas").transform.Find("Pontuacao").transform.Find("pontos").GetComponent<TextMeshProUGUI>();
         mana = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefab/OrbeDeMana.prefab");
@@ -59,18 +59,6 @@ public class StatusInimigo : MonoBehaviour
         }
     }
 
-    public void calculoDeIDInimigo()
-    {
-        if (quantidadeDeNumerosParaOId <= quantidadeDeNumerosParaOIdMaximo)
-        {
-            quantidadeDeNumerosParaOId++;
-            int numeroAleatorioParaOId = Random.Range(0, 99999999);
-            ID = numeroAleatorioParaOId;
-            calculoDeIDInimigo();
-        }
-        return;
-    }
-
     void DropMana()
     {
         Instantiate(mana, transform.position, transform.rotation);
@@ -79,7 +67,6 @@ public class StatusInimigo : MonoBehaviour
     public void MorteInimigo()
     {
         if(morteAtiva == false){
-            Spawn.Instance.ListInimigo.Clear();
             morteAtiva = true;
             Spawn.Instance.quantIniAtual = Spawn.Instance.quantIniAtual + 1;
             vidaAtual -= Status.Instance.danoReal;

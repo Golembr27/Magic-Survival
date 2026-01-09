@@ -12,6 +12,11 @@ public class Spawn : MonoBehaviour
         Instance = this;
     }
 
+    public GameObject PrefabVazio;
+    public GameObject vazio;
+
+    public Transform objetoPai;
+
     public bool NAOPODEINICIAR;
 
     public float tempoDeSpawn;
@@ -25,18 +30,20 @@ public class Spawn : MonoBehaviour
     TextMeshProUGUI fasesText;
     BoxCollider2D play;
     public bool faseIni = false;
-    public GameObject inimigo;
+    public GameObject Prefabinimigo;
     public Transform spawnTR;
     public int quantInimigo = 0;
     public int quantIniAtual = 0;
     public int fases;
     public int quantInMax;
 
+    public GameObject inimigosSpawn;
+
     int arma;
 
-    public List<GameObject> ListInimigo = new List<GameObject>();
+    
 
-    public void spawn()
+    public void spawn() //SPAWN INIMIGO
     {
         if(NAOPODEINICIAR == false)
         {
@@ -44,8 +51,8 @@ public class Spawn : MonoBehaviour
             if (faseIni == true && quantInimigo < quantInMax && AtivarOrda == true)
             {
                 quantInimigo++;
-                GameObject inimigosSpawn = Instantiate(inimigo, spawnTR.position, spawnTR.rotation);
-                ListInimigo.Add(inimigosSpawn);
+                inimigosSpawn = Instantiate(Prefabinimigo, spawnTR.position, spawnTR.rotation);
+                inimigosSpawn.transform.SetParent(objetoPai);
                 ArmasCorpoACorpo.Instance.EscolhaDeClasse();
                 spawn();
                 return;
@@ -65,7 +72,9 @@ public class Spawn : MonoBehaviour
 
     public void Fases()
     {
-        if(Status.Instance.xp >= Status.Instance.xpMaximo)
+        
+        objetoPai = GameObject.Find("ObjetoPai(Clone)").transform;
+        if (Status.Instance.xp >= Status.Instance.xpMaximo)
         {
             Status.Instance.UPDeNivel();
             return;
@@ -74,6 +83,7 @@ public class Spawn : MonoBehaviour
         {
             if (quantIniAtual == quantInMax)
             {
+                
                 numeroAleatorioDeSpawn = Random.Range(1, 4);
                 quantIniAtual = 0;
                 quantInMax += numeroAleatorioDeSpawn;
@@ -91,6 +101,9 @@ public class Spawn : MonoBehaviour
 
     private void Start()
     {
+        vazio = Instantiate(PrefabVazio, spawnTR.position, spawnTR.rotation);
+        objetoPai = GameObject.Find("ObjetoPai(Clone)").transform;
+        Debug.Log(objetoPai);
         //play  = GameObject.Find("Play").transform.GetComponent<BoxCollider2D>();
         fasesText = GameObject.Find("Canvas").transform.Find("Fases").transform.Find("Fase").GetComponent<TextMeshProUGUI>();
         quantInMax = 2;

@@ -15,7 +15,12 @@ public class Mov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (rb == null)
+        {
+            Debug.LogWarning("Rigidbody não encontrado no objeto Player. Adicione um Rigidbody para que o movimento funcione.");
+            return; // Sai do método se não houver Rigidbody
+        }
+
         float movX = Input.GetAxis("Horizontal");
         float movZ = Input.GetAxis("Vertical");
 
